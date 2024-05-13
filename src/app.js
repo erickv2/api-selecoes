@@ -1,17 +1,39 @@
-const express = require('express')
+import express from "express";
 
-const app = express()
+const app = express();
 
-const port = 3000
+//mock de seleções
+const selecoes = [
+  {
+    id: 1,
+    selecao: "Brasil",
+    grupo: "G",
+  },
+  {
+    id: 2,
+    selecao: "Suíça",
+    grupo: "G"
+  },
+  {
+    id: 3,
+    selecao: "Sérvia",
+    grupo: "G"
+  }, 
+  {
+    id: 4,
+    selecao: "Camarões",
+    grupo: "G"
+  }
+];
 
 // criar rota padrão ou raiz
 
-app.get('/', (req, res) => {
-    res.send('Olá mundo!')
-})
+app.get("/", (req, res) => {
+  res.send("Olá mundo!");
+});
 
-// escutar a porta 3000
+app.get("/selecoes", (req, res) => {
+  res.status(200).send(selecoes);
+});
 
-app.listen(port, () => {
-    console.log(`Servidor rodando com sucesso no endereço http://localhost:${port}`)
-})
+export default app;
