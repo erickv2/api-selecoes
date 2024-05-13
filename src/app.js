@@ -66,6 +66,15 @@ app.post('/selecoes', (req, res) => {
     res.status(201).send("Seleção cadastrada com sucesso!")
 })
 
+//rota de atualização
+app.put('/selecoes/:id', (req, res) => {
+    let id = req.params.id
+    let index = buscarIndexSelecao(id)
+    selecoes[index].selecao = req.body.selecao
+    selecoes[index].grupo = req.body.grupo
+    res.json(selecoes)
+})
+
 //rota de deleção
 
 app.delete('/selecoes/:id', (req, res) => {
